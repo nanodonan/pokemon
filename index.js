@@ -1,8 +1,11 @@
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
-canvas.width = 1024;
-canvas.height = 576;
+//canvas.width = 1024;
+//canvas.height = 576;
+
+canvas.width = 480
+canvas.height = 300
 
 c.fillStyle = "white";
 c.fillRect(0, 0, canvas.width, canvas.height);
@@ -15,7 +18,9 @@ playerImage.src = "./images/player-down.png"
 
 mapImage.onload = () => {
     //render map with zoom to see the house
-    c.drawImage(mapImage, -785, -650);
+    // c.drawImage(mapImage, -785, -650);
+
+    c.drawImage(mapImage, -1200, -700);
 
     //render cropped player - crop and paste    
     const playerWidth = playerImage.width / 4
@@ -32,6 +37,33 @@ mapImage.onload = () => {
         playerHeight, //end of paste
     )
 }
+
+const keyMap = {
+    w: { pressed: false },
+    a: { pressed: false },
+    s: { pressed: false },
+    d: { pressed: false },
+}
+
+window.addEventListener('keydown', (e) => {
+
+    switch (e.key) {
+        case "w":
+            keyMap.w.pressed = true
+            break;
+        case "a":
+            keyMap.a.pressed = true
+            break;
+        case "s":
+            keyMap.s.pressed = true
+            break;
+        case "d":
+            keyMap.d.pressed = true
+            break;
+        default:
+            break;
+    }
+})
 
 
 
